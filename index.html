@@ -1,0 +1,1884 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="default"
+        />
+        <title>Mariage Ilan</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Pinyon+Script&family=Lato:wght@100;300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Cormorant Garamond", serif;
+                color: #b89b6a;
+                background-color: #f5f0e8;
+                overflow-x: hidden;
+            }
+
+            /* ===== LANGUAGE TOGGLE ===== */
+            .lang-toggle {
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                z-index: 100;
+                display: flex;
+                border: 1px solid #c4b08a;
+                border-radius: 25px;
+                overflow: hidden;
+                background: rgba(245, 240, 232, 0.95);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .lang-toggle button {
+                border: none;
+                background: transparent;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 15px;
+                font-weight: 600;
+                color: #b89b6a;
+                padding: 8px 18px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .lang-toggle button.active {
+                background: #b89b6a;
+                color: #fff;
+            }
+
+            .lang-toggle button:hover:not(.active) {
+                background: rgba(184, 155, 106, 0.15);
+            }
+
+            /* ===== BACKGROUND FLORAL PATTERN ===== */
+            .page-wrapper {
+                position: relative;
+                width: 100%;
+                min-height: 100vh;
+                background-color: #f5f0e8;
+            }
+
+            .floral-bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            .floral-bg::before,
+            .floral-bg::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 50%;
+                height: 100%;
+                background-size: cover;
+                background-repeat: repeat-y;
+                opacity: 0.25;
+            }
+
+            .floral-bg::before {
+                left: 0;
+                background-position: left center;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23c4a882'/%3E%3Cstop offset='100%25' stop-color='%23a08060'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke='%23b8a080' stroke-width='1.5' opacity='0.6'%3E%3Cellipse cx='80' cy='120' rx='60' ry='45' transform='rotate(-20 80 120)'/%3E%3Cellipse cx='80' cy='120' rx='50' ry='35' transform='rotate(10 80 120)'/%3E%3Cellipse cx='80' cy='120' rx='40' ry='28' transform='rotate(40 80 120)'/%3E%3Cpath d='M60,160 Q40,200 60,260 Q80,300 50,340' stroke-width='2'/%3E%3Cellipse cx='120' cy='300' rx='45' ry='35' transform='rotate(-15 120 300)'/%3E%3Cellipse cx='120' cy='300' rx='38' ry='28' transform='rotate(15 120 300)'/%3E%3Cpath d='M20,50 Q60,80 40,140' stroke-width='1'/%3E%3Cellipse cx='60' cy='500' rx='55' ry='40' transform='rotate(-25 60 500)'/%3E%3Cellipse cx='60' cy='500' rx='45' ry='32' transform='rotate(5 60 500)'/%3E%3Cellipse cx='60' cy='500' rx='35' ry='25' transform='rotate(35 60 500)'/%3E%3Cpath d='M80,540 Q60,580 80,640 Q100,680 70,720' stroke-width='2'/%3E%3Cellipse cx='100' cy='700' rx='40' ry='30' transform='rotate(-10 100 700)'/%3E%3C/g%3E%3C/svg%3E");
+            }
+
+            .floral-bg::after {
+                right: 0;
+                background-position: right center;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800'%3E%3Cg fill='none' stroke='%23b8a080' stroke-width='1.5' opacity='0.6'%3E%3Cellipse cx='320' cy='100' rx='55' ry='40' transform='rotate(20 320 100)'/%3E%3Cellipse cx='320' cy='100' rx='45' ry='32' transform='rotate(-10 320 100)'/%3E%3Cellipse cx='320' cy='100' rx='35' ry='24' transform='rotate(-40 320 100)'/%3E%3Cpath d='M340,140 Q360,180 340,240 Q320,280 350,320' stroke-width='2'/%3E%3Cellipse cx='280' cy='280' rx='42' ry='32' transform='rotate(15 280 280)'/%3E%3Cpath d='M380,30 Q340,60 360,120' stroke-width='1'/%3E%3Cellipse cx='340' cy='480' rx='50' ry='38' transform='rotate(25 340 480)'/%3E%3Cellipse cx='340' cy='480' rx='42' ry='30' transform='rotate(-5 340 480)'/%3E%3Cpath d='M320,520 Q340,560 320,620 Q300,660 330,700' stroke-width='2'/%3E%3Cellipse cx='300' cy='680' rx='38' ry='28' transform='rotate(10 300 680)'/%3E%3C/g%3E%3C/svg%3E");
+            }
+
+            /* ===== MAIN CONTENT ===== */
+            .content {
+                position: relative;
+                z-index: 1;
+                max-width: 750px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            /* ===== SECTION: HOUPPA & SOIREE ===== */
+            .section-houppa {
+                padding: 40px 30px 50px;
+                position: relative;
+            }
+
+            /* Floral border overlay for invitation */
+            .invitation-card {
+                position: relative;
+                background: linear-gradient(
+                    180deg,
+                    #f7f2ea 0%,
+                    #f0ead8 50%,
+                    #f7f2ea 100%
+                );
+                border: none;
+                overflow: hidden;
+            }
+
+            .invitation-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border: 40px solid transparent;
+                border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect fill='%23ede5d5' width='200' height='200'/%3E%3Cg fill='none' stroke='%23c4aa80' stroke-width='1' opacity='0.5'%3E%3Cellipse cx='40' cy='40' rx='30' ry='20' transform='rotate(-20 40 40)'/%3E%3Cellipse cx='160' cy='40' rx='28' ry='18' transform='rotate(20 160 40)'/%3E%3Cellipse cx='40' cy='160' rx='25' ry='18' transform='rotate(15 40 160)'/%3E%3Cellipse cx='160' cy='160' rx='30' ry='20' transform='rotate(-15 160 160)'/%3E%3Cpath d='M30,80 Q50,100 30,130'/%3E%3Cpath d='M170,80 Q150,100 170,130'/%3E%3C/g%3E%3C/svg%3E")
+                    60 fill;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            /* BS"D - Top right */
+            .bsd {
+                text-align: right;
+                font-family: "Times New Roman", serif;
+                font-size: 22px;
+                color: #b89b6a;
+                padding: 30px 40px 0 0;
+                direction: rtl;
+                position: relative;
+                z-index: 2;
+            }
+
+            /* Hebrew verse */
+            .hebrew-verse {
+                font-family: "Times New Roman", serif;
+                font-size: 18px;
+                color: #c4a87a;
+                opacity: 0.7;
+                margin: 25px auto 30px;
+                direction: rtl;
+                letter-spacing: 1px;
+                padding: 0 20px;
+                position: relative;
+                z-index: 2;
+                transform: perspective(300px) rotateX(5deg);
+            }
+
+            /* Main title */
+            .main-title {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 38px;
+                font-weight: 600;
+                letter-spacing: 8px;
+                text-transform: uppercase;
+                color: #b89b6a;
+                margin-bottom: 35px;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (min-width: 480px) {
+                .main-title {
+                    font-size: 46px;
+                    letter-spacing: 10px;
+                }
+            }
+
+            /* Wedding rings */
+            .rings-container {
+                margin: 10px auto 35px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .rings-container svg {
+                width: 120px;
+                height: 90px;
+            }
+
+            /* Parents names */
+            .parents-section {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 30px;
+                margin-bottom: 30px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .parents-col {
+                text-align: left;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 14px;
+                font-style: italic;
+                color: #b89b6a;
+                line-height: 1.7;
+            }
+
+            .parents-col.right {
+                text-align: right;
+            }
+
+            @media (min-width: 480px) {
+                .parents-col {
+                    font-size: 16px;
+                }
+            }
+
+            /* RTL mode: swap parent columns alignment */
+            html[dir="rtl"] .parents-col {
+                text-align: right;
+            }
+            html[dir="rtl"] .parents-col.right {
+                text-align: left;
+            }
+            html[dir="rtl"] .form-group,
+            html[dir="rtl"] .checkbox-group,
+            html[dir="rtl"] .guest-count-group {
+                text-align: right;
+            }
+            html[dir="rtl"] .lang-toggle {
+                right: auto;
+                left: 15px;
+            }
+
+            /* Announcement text */
+            .announcement {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                font-style: italic;
+                color: #b89b6a;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                position: relative;
+                z-index: 2;
+                padding: 0 20px;
+            }
+
+            @media (min-width: 480px) {
+                .announcement {
+                    font-size: 24px;
+                }
+            }
+
+            /* Couple names */
+            .couple-names {
+                font-family: "Pinyon Script", cursive;
+                font-size: 48px;
+                font-weight: 400;
+                color: #b89b6a;
+                margin: 10px 0 20px;
+                position: relative;
+                z-index: 2;
+                line-height: 1.3;
+                /* Always LTR for the couple names */
+                direction: ltr;
+                unicode-bidi: bidi-override;
+            }
+
+            .couple-names .ampersand {
+                font-size: 36px;
+                margin: 0 5px;
+            }
+
+            @media (min-width: 480px) {
+                .couple-names {
+                    font-size: 58px;
+                }
+            }
+
+            /* Ceremony text */
+            .ceremony-text {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                font-style: italic;
+                color: #b89b6a;
+                line-height: 1.6;
+                margin-bottom: 25px;
+                position: relative;
+                z-index: 2;
+                padding: 0 20px;
+            }
+
+            @media (min-width: 480px) {
+                .ceremony-text {
+                    font-size: 24px;
+                }
+            }
+
+            /* Date */
+            .event-date {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 28px;
+                font-weight: 500;
+                color: #b89b6a;
+                margin-bottom: 15px;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (min-width: 480px) {
+                .event-date {
+                    font-size: 34px;
+                }
+            }
+
+            /* Time */
+            .event-time {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 22px;
+                font-style: italic;
+                color: #b89b6a;
+                margin-bottom: 5px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .event-reception {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                font-style: italic;
+                color: #b89b6a;
+                margin-bottom: 25px;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (min-width: 480px) {
+                .event-time {
+                    font-size: 26px;
+                }
+                .event-reception {
+                    font-size: 24px;
+                }
+            }
+
+            /* Venue */
+            .venue {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 24px;
+                font-style: italic;
+                color: #b89b6a;
+                line-height: 1.5;
+                margin-bottom: 25px;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (min-width: 480px) {
+                .venue {
+                    font-size: 28px;
+                }
+            }
+
+            /* Itinerary button */
+            .btn-itinerary {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: #ffffff;
+                border: 1px solid #d4c5a8;
+                color: #b89b6a;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 18px;
+                padding: 10px 30px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                margin-bottom: 35px;
+                position: relative;
+                z-index: 2;
+                border-radius: 2px;
+            }
+
+            .btn-itinerary:hover {
+                background: #f5f0e8;
+                border-color: #b89b6a;
+            }
+
+            .btn-itinerary svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            /* Memorial text */
+            .memorial {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 18px;
+                font-style: italic;
+                color: #b89b6a;
+                opacity: 0.8;
+                margin-bottom: 20px;
+                padding: 0 30px;
+                line-height: 1.6;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (min-width: 480px) {
+                .memorial {
+                    font-size: 22px;
+                }
+            }
+
+            /* Dress code */
+            .dress-code {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 18px;
+                font-style: italic;
+                color: #b89b6a;
+                opacity: 0.8;
+                margin-bottom: 40px;
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (min-width: 480px) {
+                .dress-code {
+                    font-size: 22px;
+                }
+            }
+
+            /* ===== SECTION: REPONSE ===== */
+            .section-reponse {
+                padding: 40px 20px 60px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .reponse-title {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 40px;
+                font-weight: 600;
+                letter-spacing: 8px;
+                text-transform: uppercase;
+                color: #b89b6a;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            @media (min-width: 480px) {
+                .reponse-title {
+                    font-size: 48px;
+                    letter-spacing: 10px;
+                }
+            }
+
+            /* Form container */
+            .form-container {
+                background: rgba(245, 240, 232, 0.85);
+                padding: 30px 25px 35px;
+                max-width: 700px;
+                margin: 0 auto;
+                border-radius: 2px;
+            }
+
+            .form-group {
+                margin-bottom: 25px;
+                text-align: left;
+            }
+
+            .form-group label {
+                display: block;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                font-weight: 700;
+                color: #b89b6a;
+                margin-bottom: 8px;
+            }
+
+            .form-group label .required {
+                color: #b89b6a;
+            }
+
+            .form-group input[type="text"],
+            .form-group textarea {
+                width: 100%;
+                max-width: 400px;
+                padding: 12px 14px;
+                border: 1px solid #d4c5a8;
+                background: #ffffff;
+                font-family: "Lato", sans-serif;
+                font-size: 16px;
+                color: #333;
+                outline: none;
+                transition: border-color 0.3s;
+            }
+
+            .form-group input[type="text"]:focus,
+            .form-group textarea:focus {
+                border-color: #b89b6a;
+            }
+
+            .form-group textarea {
+                max-width: 100%;
+                min-height: 120px;
+                resize: vertical;
+            }
+
+            /* Checkbox group */
+            .checkbox-group {
+                margin-bottom: 25px;
+                text-align: left;
+            }
+
+            .checkbox-group .group-label {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                font-weight: 700;
+                color: #b89b6a;
+                margin-bottom: 10px;
+            }
+
+            .checkbox-group .group-label .required {
+                color: #b89b6a;
+            }
+
+            .checkbox-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 8px;
+                cursor: pointer;
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                appearance: none;
+                -webkit-appearance: none;
+                width: 22px;
+                height: 22px;
+                min-width: 22px;
+                border: 1.5px solid #c4b08a;
+                background: transparent;
+                cursor: pointer;
+                position: relative;
+                border-radius: 2px;
+            }
+
+            .checkbox-item input[type="checkbox"]:checked {
+                background: #b89b6a;
+                border-color: #b89b6a;
+            }
+
+            .checkbox-item input[type="checkbox"]:checked::after {
+                content: "\2713";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .checkbox-item label {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                color: #b89b6a;
+                cursor: pointer;
+            }
+
+            /* Submit button */
+            .btn-submit {
+                display: inline-block;
+                background: #b89b6a;
+                color: #ffffff;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                padding: 12px 35px;
+                border: 2px solid #b89b6a;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+            }
+
+            .btn-submit:hover {
+                background: #a0845a;
+                border-color: #a0845a;
+            }
+
+            /* ===== NUMBER OF GUESTS ===== */
+            .guest-count-group {
+                margin-bottom: 25px;
+                text-align: left;
+            }
+
+            .guest-count-group label {
+                display: block;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 20px;
+                font-weight: 700;
+                color: #b89b6a;
+                margin-bottom: 8px;
+            }
+
+            .guest-count-group input[type="number"] {
+                width: 100px;
+                padding: 12px 14px;
+                border: 1px solid #d4c5a8;
+                background: #ffffff;
+                font-family: "Lato", sans-serif;
+                font-size: 16px;
+                color: #333;
+                outline: none;
+                transition: border-color 0.3s;
+            }
+
+            .guest-count-group input[type="number"]:focus {
+                border-color: #b89b6a;
+            }
+
+            /* ===== INVITATION FLORAL BORDER ===== */
+            .invitation-wrapper {
+                position: relative;
+                background: linear-gradient(
+                    180deg,
+                    #f5efe3 0%,
+                    #eee7d8 30%,
+                    #f0ead8 60%,
+                    #f5efe3 100%
+                );
+                overflow: hidden;
+            }
+
+            .floral-left,
+            .floral-right {
+                position: absolute;
+                top: 0;
+                width: 80px;
+                height: 100%;
+                z-index: 3;
+                pointer-events: none;
+                opacity: 0.35;
+            }
+
+            .floral-left {
+                left: 0;
+            }
+
+            .floral-right {
+                right: 0;
+                transform: scaleX(-1);
+            }
+
+            /* ===== TOAST / SUCCESS MESSAGE ===== */
+            .toast {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(184, 155, 106, 0.95);
+                color: white;
+                padding: 30px 40px;
+                border-radius: 4px;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 22px;
+                text-align: center;
+                z-index: 1000;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .toast.show {
+                display: block;
+                animation: fadeInOut 3s ease forwards;
+            }
+
+            @keyframes fadeInOut {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.9);
+                }
+                15% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+                85% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.9);
+                }
+            }
+
+            /* ===== MOBILE RESPONSIVE - iPhone first ===== */
+
+            /* Prevent iOS zoom on input focus */
+            @supports (-webkit-touch-callout: none) {
+                input[type="text"],
+                input[type="number"],
+                textarea,
+                select {
+                    font-size: 16px !important;
+                }
+            }
+
+            /* Small phones: iPhone SE, iPhone 8 (375px) */
+            @media (max-width: 399px) {
+                .lang-toggle {
+                    top: 10px;
+                    right: 10px;
+                }
+                .lang-toggle button {
+                    font-size: 13px;
+                    padding: 6px 12px;
+                }
+                html[dir="rtl"] .lang-toggle {
+                    right: auto;
+                    left: 10px;
+                }
+
+                .section-houppa {
+                    padding: 30px 15px 40px;
+                }
+
+                .bsd {
+                    font-size: 18px;
+                    padding: 20px 20px 0 0;
+                }
+
+                .hebrew-verse {
+                    font-size: 14px;
+                    margin: 15px auto 20px;
+                    padding: 0 10px;
+                }
+
+                .main-title {
+                    font-size: 26px;
+                    letter-spacing: 5px;
+                    margin-bottom: 20px;
+                }
+
+                .rings-container {
+                    margin: 5px auto 20px;
+                }
+                .rings-container svg {
+                    width: 90px;
+                    height: 68px;
+                }
+
+                .parents-section {
+                    padding: 0 10px;
+                    margin-bottom: 20px;
+                    gap: 10px;
+                }
+                .parents-col {
+                    font-size: 12px;
+                    line-height: 1.6;
+                }
+
+                .announcement {
+                    font-size: 16px;
+                    padding: 0 10px;
+                    margin-bottom: 15px;
+                }
+
+                .couple-names {
+                    font-size: 38px;
+                    margin: 5px 0 15px;
+                }
+                .couple-names .ampersand {
+                    font-size: 28px;
+                }
+
+                .ceremony-text {
+                    font-size: 16px;
+                    padding: 0 10px;
+                    margin-bottom: 18px;
+                }
+
+                .event-date {
+                    font-size: 22px;
+                    margin-bottom: 10px;
+                }
+
+                .event-time {
+                    font-size: 18px;
+                }
+                .event-reception {
+                    font-size: 16px;
+                    margin-bottom: 18px;
+                }
+
+                .venue {
+                    font-size: 20px;
+                    margin-bottom: 18px;
+                }
+
+                .btn-itinerary {
+                    font-size: 16px;
+                    padding: 8px 22px;
+                    margin-bottom: 25px;
+                }
+
+                .memorial {
+                    font-size: 15px;
+                    padding: 0 15px;
+                    margin-bottom: 15px;
+                }
+
+                .dress-code {
+                    font-size: 15px;
+                    margin-bottom: 25px;
+                }
+
+                .section-reponse {
+                    padding: 30px 15px 40px;
+                }
+
+                .reponse-title {
+                    font-size: 30px;
+                    letter-spacing: 5px;
+                    margin-bottom: 20px;
+                }
+
+                .form-container {
+                    padding: 20px 15px 25px;
+                }
+
+                .form-group label,
+                .checkbox-group .group-label,
+                .guest-count-group label {
+                    font-size: 18px;
+                }
+
+                .checkbox-item label {
+                    font-size: 18px;
+                }
+
+                .form-group input[type="text"] {
+                    max-width: 100%;
+                }
+
+                .btn-submit {
+                    font-size: 16px;
+                    padding: 10px 28px;
+                    letter-spacing: 2px;
+                }
+
+                .toast {
+                    font-size: 18px;
+                    padding: 20px 25px;
+                    width: 85%;
+                }
+
+                .floral-left,
+                .floral-right {
+                    width: 40px;
+                }
+            }
+
+            /* Medium phones: iPhone 12/13/14 (390-430px) */
+            @media (min-width: 400px) and (max-width: 479px) {
+                .lang-toggle {
+                    top: 12px;
+                    right: 12px;
+                }
+                .lang-toggle button {
+                    font-size: 14px;
+                    padding: 7px 15px;
+                }
+                html[dir="rtl"] .lang-toggle {
+                    right: auto;
+                    left: 12px;
+                }
+
+                .section-houppa {
+                    padding: 35px 20px 45px;
+                }
+
+                .bsd {
+                    font-size: 20px;
+                    padding: 25px 30px 0 0;
+                }
+
+                .hebrew-verse {
+                    font-size: 16px;
+                    margin: 20px auto 25px;
+                }
+
+                .main-title {
+                    font-size: 30px;
+                    letter-spacing: 6px;
+                    margin-bottom: 25px;
+                }
+
+                .rings-container {
+                    margin: 8px auto 25px;
+                }
+                .rings-container svg {
+                    width: 100px;
+                    height: 75px;
+                }
+
+                .parents-section {
+                    padding: 0 15px;
+                    margin-bottom: 25px;
+                }
+                .parents-col {
+                    font-size: 13px;
+                }
+
+                .announcement {
+                    font-size: 18px;
+                    padding: 0 15px;
+                }
+
+                .couple-names {
+                    font-size: 44px;
+                    margin: 8px 0 18px;
+                }
+                .couple-names .ampersand {
+                    font-size: 32px;
+                }
+
+                .ceremony-text {
+                    font-size: 18px;
+                    padding: 0 15px;
+                }
+
+                .event-date {
+                    font-size: 25px;
+                }
+
+                .event-time {
+                    font-size: 20px;
+                }
+                .event-reception {
+                    font-size: 18px;
+                }
+
+                .venue {
+                    font-size: 22px;
+                }
+
+                .memorial {
+                    font-size: 16px;
+                    padding: 0 20px;
+                }
+
+                .dress-code {
+                    font-size: 16px;
+                }
+
+                .reponse-title {
+                    font-size: 34px;
+                    letter-spacing: 6px;
+                }
+
+                .form-group input[type="text"] {
+                    max-width: 100%;
+                }
+
+                .toast {
+                    font-size: 20px;
+                    padding: 25px 30px;
+                    width: 80%;
+                }
+
+                .floral-left,
+                .floral-right {
+                    width: 55px;
+                }
+            }
+
+            /* Touch-friendly: larger tap targets on mobile */
+            @media (max-width: 479px) {
+                .checkbox-item {
+                    padding: 4px 0;
+                }
+                .checkbox-item input[type="checkbox"] {
+                    width: 26px;
+                    height: 26px;
+                    min-width: 26px;
+                }
+                .btn-itinerary {
+                    -webkit-tap-highlight-color: transparent;
+                    touch-action: manipulation;
+                }
+                .btn-submit {
+                    -webkit-tap-highlight-color: transparent;
+                    touch-action: manipulation;
+                    min-height: 48px;
+                }
+                .lang-toggle button {
+                    -webkit-tap-highlight-color: transparent;
+                    touch-action: manipulation;
+                    min-height: 40px;
+                }
+            }
+
+            /* Safe area insets for iPhone X+ notch/home indicator */
+            @supports (padding-bottom: env(safe-area-inset-bottom)) {
+                .section-reponse {
+                    padding-bottom: calc(
+                        60px + env(safe-area-inset-bottom)
+                    );
+                }
+                .lang-toggle {
+                    top: calc(15px + env(safe-area-inset-top));
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Language Toggle -->
+        <div class="lang-toggle">
+            <button id="btnFr" class="active" onclick="switchLang('fr')">
+                Français
+            </button>
+            <button id="btnHe" onclick="switchLang('he')">עברית</button>
+        </div>
+
+        <div class="page-wrapper">
+            <!-- Full-page floral background -->
+            <div class="floral-bg"></div>
+
+            <div class="content">
+                <!-- ===== INVITATION CARD ===== -->
+                <div class="invitation-wrapper">
+                    <!-- Floral side borders as SVG overlays -->
+                    <svg
+                        class="floral-left"
+                        viewBox="0 0 80 800"
+                        preserveAspectRatio="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g
+                            fill="none"
+                            stroke="#b8a080"
+                            stroke-width="1.2"
+                            opacity="0.7"
+                        >
+                            <ellipse
+                                cx="35"
+                                cy="60"
+                                rx="30"
+                                ry="20"
+                                transform="rotate(-25 35 60)"
+                            />
+                            <ellipse
+                                cx="35"
+                                cy="60"
+                                rx="25"
+                                ry="16"
+                                transform="rotate(10 35 60)"
+                            />
+                            <ellipse
+                                cx="35"
+                                cy="60"
+                                rx="20"
+                                ry="13"
+                                transform="rotate(40 35 60)"
+                            />
+                            <circle
+                                cx="35"
+                                cy="60"
+                                r="6"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M25,90 Q10,130 25,180"
+                                stroke-width="1.5"
+                            />
+                            <path d="M30,95 Q50,110 35,140" />
+                            <ellipse
+                                cx="15"
+                                cy="140"
+                                rx="18"
+                                ry="10"
+                                transform="rotate(-40 15 140)"
+                            />
+                            <ellipse
+                                cx="40"
+                                cy="250"
+                                rx="28"
+                                ry="18"
+                                transform="rotate(-20 40 250)"
+                            />
+                            <ellipse
+                                cx="40"
+                                cy="250"
+                                rx="22"
+                                ry="14"
+                                transform="rotate(15 40 250)"
+                            />
+                            <ellipse
+                                cx="40"
+                                cy="250"
+                                rx="17"
+                                ry="11"
+                                transform="rotate(45 40 250)"
+                            />
+                            <circle
+                                cx="40"
+                                cy="250"
+                                r="5"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M30,280 Q15,320 30,370"
+                                stroke-width="1.5"
+                            />
+                            <path d="M35,285 Q55,310 40,340" />
+                            <ellipse
+                                cx="20"
+                                cy="330"
+                                rx="16"
+                                ry="9"
+                                transform="rotate(-35 20 330)"
+                            />
+                            <ellipse
+                                cx="30"
+                                cy="450"
+                                rx="26"
+                                ry="17"
+                                transform="rotate(-30 30 450)"
+                            />
+                            <ellipse
+                                cx="30"
+                                cy="450"
+                                rx="20"
+                                ry="13"
+                                transform="rotate(5 30 450)"
+                            />
+                            <ellipse
+                                cx="30"
+                                cy="450"
+                                rx="15"
+                                ry="10"
+                                transform="rotate(35 30 450)"
+                            />
+                            <circle
+                                cx="30"
+                                cy="450"
+                                r="5"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M20,480 Q8,520 22,570"
+                                stroke-width="1.5"
+                            />
+                            <ellipse
+                                cx="12"
+                                cy="530"
+                                rx="15"
+                                ry="8"
+                                transform="rotate(-45 12 530)"
+                            />
+                            <ellipse
+                                cx="38"
+                                cy="650"
+                                rx="25"
+                                ry="16"
+                                transform="rotate(-15 38 650)"
+                            />
+                            <ellipse
+                                cx="38"
+                                cy="650"
+                                rx="19"
+                                ry="12"
+                                transform="rotate(20 38 650)"
+                            />
+                            <circle
+                                cx="38"
+                                cy="650"
+                                r="5"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M28,680 Q12,720 28,760"
+                                stroke-width="1.5"
+                            />
+                            <ellipse
+                                cx="18"
+                                cy="730"
+                                rx="14"
+                                ry="8"
+                                transform="rotate(-40 18 730)"
+                            />
+                        </g>
+                    </svg>
+
+                    <svg
+                        class="floral-right"
+                        viewBox="0 0 80 800"
+                        preserveAspectRatio="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g
+                            fill="none"
+                            stroke="#b8a080"
+                            stroke-width="1.2"
+                            opacity="0.7"
+                        >
+                            <ellipse
+                                cx="35"
+                                cy="60"
+                                rx="30"
+                                ry="20"
+                                transform="rotate(-25 35 60)"
+                            />
+                            <ellipse
+                                cx="35"
+                                cy="60"
+                                rx="25"
+                                ry="16"
+                                transform="rotate(10 35 60)"
+                            />
+                            <ellipse
+                                cx="35"
+                                cy="60"
+                                rx="20"
+                                ry="13"
+                                transform="rotate(40 35 60)"
+                            />
+                            <circle
+                                cx="35"
+                                cy="60"
+                                r="6"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M25,90 Q10,130 25,180"
+                                stroke-width="1.5"
+                            />
+                            <path d="M30,95 Q50,110 35,140" />
+                            <ellipse
+                                cx="15"
+                                cy="140"
+                                rx="18"
+                                ry="10"
+                                transform="rotate(-40 15 140)"
+                            />
+                            <ellipse
+                                cx="40"
+                                cy="250"
+                                rx="28"
+                                ry="18"
+                                transform="rotate(-20 40 250)"
+                            />
+                            <ellipse
+                                cx="40"
+                                cy="250"
+                                rx="22"
+                                ry="14"
+                                transform="rotate(15 40 250)"
+                            />
+                            <ellipse
+                                cx="40"
+                                cy="250"
+                                rx="17"
+                                ry="11"
+                                transform="rotate(45 40 250)"
+                            />
+                            <circle
+                                cx="40"
+                                cy="250"
+                                r="5"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M30,280 Q15,320 30,370"
+                                stroke-width="1.5"
+                            />
+                            <ellipse
+                                cx="20"
+                                cy="330"
+                                rx="16"
+                                ry="9"
+                                transform="rotate(-35 20 330)"
+                            />
+                            <ellipse
+                                cx="30"
+                                cy="450"
+                                rx="26"
+                                ry="17"
+                                transform="rotate(-30 30 450)"
+                            />
+                            <ellipse
+                                cx="30"
+                                cy="450"
+                                rx="20"
+                                ry="13"
+                                transform="rotate(5 30 450)"
+                            />
+                            <ellipse
+                                cx="30"
+                                cy="450"
+                                rx="15"
+                                ry="10"
+                                transform="rotate(35 30 450)"
+                            />
+                            <circle
+                                cx="30"
+                                cy="450"
+                                r="5"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M20,480 Q8,520 22,570"
+                                stroke-width="1.5"
+                            />
+                            <ellipse
+                                cx="12"
+                                cy="530"
+                                rx="15"
+                                ry="8"
+                                transform="rotate(-45 12 530)"
+                            />
+                            <ellipse
+                                cx="38"
+                                cy="650"
+                                rx="25"
+                                ry="16"
+                                transform="rotate(-15 38 650)"
+                            />
+                            <ellipse
+                                cx="38"
+                                cy="650"
+                                rx="19"
+                                ry="12"
+                                transform="rotate(20 38 650)"
+                            />
+                            <circle
+                                cx="38"
+                                cy="650"
+                                r="5"
+                                fill="#c4aa80"
+                                opacity="0.3"
+                            />
+                            <path
+                                d="M28,680 Q12,720 28,760"
+                                stroke-width="1.5"
+                            />
+                            <ellipse
+                                cx="18"
+                                cy="730"
+                                rx="14"
+                                ry="8"
+                                transform="rotate(-40 18 730)"
+                            />
+                        </g>
+                    </svg>
+
+                    <div class="section-houppa">
+                        <!-- BS"D -->
+                        <div class="bsd">בס״ד</div>
+
+                        <!-- Hebrew verse -->
+                        <div class="hebrew-verse">
+                            קול ששון וקול שמחה, קול חתן וקול כלה
+                        </div>
+
+                        <!-- Main title -->
+                        <h1
+                            class="main-title"
+                            data-fr="HOUPPA &amp; SOIRÉE"
+                            data-he="חופה ואירוע"
+                        >
+                            HOUPPA &amp; SOIRÉE
+                        </h1>
+
+                        <!-- Wedding rings -->
+                        <div class="rings-container">
+                            <svg
+                                viewBox="0 0 120 80"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <defs>
+                                    <linearGradient
+                                        id="ring1"
+                                        x1="0"
+                                        y1="0"
+                                        x2="1"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            stop-color="#d4b87a"
+                                        />
+                                        <stop
+                                            offset="50%"
+                                            stop-color="#c4a060"
+                                        />
+                                        <stop
+                                            offset="100%"
+                                            stop-color="#d4b87a"
+                                        />
+                                    </linearGradient>
+                                    <linearGradient
+                                        id="ring2"
+                                        x1="0"
+                                        y1="0"
+                                        x2="1"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            stop-color="#c4a060"
+                                        />
+                                        <stop
+                                            offset="50%"
+                                            stop-color="#d4b87a"
+                                        />
+                                        <stop
+                                            offset="100%"
+                                            stop-color="#c4a060"
+                                        />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse
+                                    cx="45"
+                                    cy="40"
+                                    rx="28"
+                                    ry="30"
+                                    fill="none"
+                                    stroke="url(#ring1)"
+                                    stroke-width="3"
+                                    opacity="0.7"
+                                />
+                                <ellipse
+                                    cx="45"
+                                    cy="40"
+                                    rx="24"
+                                    ry="26"
+                                    fill="none"
+                                    stroke="url(#ring1)"
+                                    stroke-width="1"
+                                    opacity="0.4"
+                                />
+                                <ellipse
+                                    cx="75"
+                                    cy="40"
+                                    rx="28"
+                                    ry="30"
+                                    fill="none"
+                                    stroke="url(#ring2)"
+                                    stroke-width="3"
+                                    opacity="0.7"
+                                />
+                                <ellipse
+                                    cx="75"
+                                    cy="40"
+                                    rx="24"
+                                    ry="26"
+                                    fill="none"
+                                    stroke="url(#ring2)"
+                                    stroke-width="1"
+                                    opacity="0.4"
+                                />
+                            </svg>
+                        </div>
+
+                        <!-- Parents names -->
+                        <div class="parents-section">
+                            <div
+                                class="parents-col"
+                                data-fr="Léon et Solange Benayoun<br>Estrella Elbaz<br>Ari et Nathalie Elbaz"
+                                data-he="אלברט ואליס ישראלביץ<br>דלפין ואלכסנדר ישראלביץ"
+                            >
+                                Léon et Solange Benayoun<br />
+                                Estrella Elbaz<br />
+                                Ari et Nathalie Elbaz
+                            </div>
+                            <div
+                                class="parents-col right"
+                                data-fr="Albert et Alice Izraelewicz<br>Alexandre et Delphine Izraelewicz<br>"
+                                data-he="מאיר ומרגו ון<br>אסטרלה אלבז<br>ארי ונטלי אלבז"
+                            >
+                                Albert et Alice Izraelewicz <br />
+                                Alexandre et Delphine Izraelewicz<br />
+                            </div>
+                        </div>
+
+                        <!-- Announcement -->
+                        <p
+                            class="announcement"
+                            data-fr="Ont la joie de vous faire part du mariage<br>de leurs petits enfants et enfants"
+                            data-he="שמחים להזמינכם ליום הנישואיהם<br>של נכדיהם וילדיהם"
+                        >
+                            Ont la joie de vous faire part du mariage<br />
+                            de leurs petits enfants et enfants
+                        </p>
+
+                        <!-- Couple names -->
+                        <div class="couple-names">
+                            Salomé <span class="ampersand">&amp;</span> Ilan
+                        </div>
+
+                        <!-- Ceremony text -->
+                        <p
+                            class="ceremony-text"
+                            data-fr="et seront honorés de votre présence à la<br>cérémonie religieuse qui sera célébrée"
+                            data-he="ויתכבדו בנוכחותכם<br>בטקס הדתי שייערך"
+                        >
+                            et seront honorés de votre présence à la<br />
+                            cérémonie religieuse qui sera célébrée
+                        </p>
+
+                        <!-- Date -->
+                        <div
+                            class="event-date"
+                            data-fr="Lundi 23 Février 2026"
+                            data-he="יום שני, 23 בפברואר 2026"
+                        >
+                            Lundi 23 Février 2026
+                        </div>
+
+                        <!-- Time -->
+                        <div
+                            class="event-time"
+                            data-fr="à 18h"
+                            data-he="חופה: 18:00"
+                        >
+                            à 18h
+                        </div>
+                        <div
+                            class="event-reception"
+                            data-fr="ainsi qu'à la réception qui suivra"
+                            data-he="קבלת פנים: 19:00"
+                        >
+                            ainsi qu'à la réception qui suivra
+                        </div>
+
+                        <!-- Venue -->
+                        <div
+                            class="venue"
+                            data-fr="À la salle « ARYA »<br>Brosh 2 Shoham"
+                            data-he="באולם אריא<br>ברוש 2, שוהם"
+                        >
+                            À la salle « ARYA »<br />
+                            Brosh 2 Shoham
+                        </div>
+
+                        <!-- Itinerary button -->
+                        <div>
+                            <a
+                                href="https://waze.com/ul/hsv8y5s6w2"
+                                target="_blank"
+                                rel="noopener"
+                                class="btn-itinerary"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <circle
+                                        cx="12"
+                                        cy="10"
+                                        r="8"
+                                        stroke="#b89b6a"
+                                        stroke-width="1.5"
+                                        fill="none"
+                                    />
+                                    <circle
+                                        cx="9"
+                                        cy="9"
+                                        r="1.2"
+                                        fill="#b89b6a"
+                                    />
+                                    <circle
+                                        cx="15"
+                                        cy="9"
+                                        r="1.2"
+                                        fill="#b89b6a"
+                                    />
+                                    <path
+                                        d="M8.5,13 Q12,16 15.5,13"
+                                        stroke="#b89b6a"
+                                        stroke-width="1.2"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                                <span data-fr="Itinéraire" data-he="ניווט"
+                                    >Itinéraire</span
+                                >
+                            </a>
+                        </div>
+
+                        <!-- Memorial -->
+                        <p
+                            class="memorial"
+                            data-fr="Une pensée émue pour nos grands parents Moshe<br>Elbaz et Israel Benchaya"
+                            data-he="מחשבה נרגשת לסבינו משה<br>אלבז וישראל בנשיה"
+                        >
+                            Une pensée émue pour nos grands parents Moshe<br />
+                            Elbaz et Israel Benchaya
+                        </p>
+
+                        <!-- Dress code -->
+                        <p
+                            class="dress-code"
+                            data-fr="Une tenue tsniout réjouira les mariés"
+                            data-he="לבוש צנוע ישמח את החתן והכלה"
+                        >
+                            Une tenue tsniout réjouira les mariés
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ===== RESPONSE SECTION ===== -->
+                <div class="section-reponse">
+                    <h2
+                        class="reponse-title"
+                        data-fr="RÉPONSE"
+                        data-he="אישור הגעה"
+                    >
+                        RÉPONSE
+                    </h2>
+
+                    <div class="form-container">
+                        <form
+                            id="rsvpForm"
+                            onsubmit="return handleSubmit(event);"
+                        >
+                            <!-- Nom -->
+                            <div class="form-group">
+                                <label data-fr="Nom" data-he="שם משפחה"
+                                    >Nom <span class="required">*</span></label
+                                >
+                                <input type="text" name="nom" required />
+                            </div>
+
+                            <!-- Prénom -->
+                            <div class="form-group">
+                                <label data-fr="Prénom" data-he="שם פרטי"
+                                    >Prénom
+                                    <span class="required">*</span></label
+                                >
+                                <input type="text" name="prenom" required />
+                            </div>
+
+                            <!-- Présence -->
+                            <div class="checkbox-group">
+                                <div
+                                    class="group-label"
+                                    data-fr="Présence"
+                                    data-he="נוכחות"
+                                >
+                                    Présence <span class="required">*</span>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input
+                                        type="checkbox"
+                                        id="assisteront"
+                                        name="presence"
+                                        value="assisteront"
+                                    />
+                                    <label
+                                        for="assisteront"
+                                        data-fr="Assisteront"
+                                        data-he="יהיו נוכחים"
+                                        >Assisteront</label
+                                    >
+                                </div>
+                                <div class="checkbox-item">
+                                    <input
+                                        type="checkbox"
+                                        id="nassisteront"
+                                        name="presence"
+                                        value="nassisteront"
+                                    />
+                                    <label
+                                        for="nassisteront"
+                                        data-fr="N'assisteront pas"
+                                        data-he="לא יהיו נוכחים"
+                                        >N'assisteront pas</label
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Number of guests (shown when attending) -->
+                            <div
+                                class="guest-count-group"
+                                id="guestCountGroup"
+                                style="display: none"
+                            >
+                                <label
+                                    data-fr="Nombre d'invités"
+                                    data-he="כמות אורחים"
+                                    >Nombre d'invités
+                                    <span class="required">*</span></label
+                                >
+                                <input
+                                    type="number"
+                                    name="guests"
+                                    min="1"
+                                    max="20"
+                                    value="1"
+                                />
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-group">
+                                <label
+                                    data-fr="Message pour les Mariés"
+                                    data-he="מספר מילים לחתן ולכלה"
+                                    >Message pour les Mariés</label
+                                >
+                                <textarea name="message" rows="4"></textarea>
+                            </div>
+
+                            <!-- Submit -->
+                            <button
+                                type="submit"
+                                class="btn-submit"
+                                data-fr="Envoyer"
+                                data-he="שלח"
+                            >
+                                Envoyer
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast message -->
+            <div
+                class="toast"
+                id="toast"
+                data-fr="Merci pour votre réponse !"
+                data-he="!תודה על תשובתכם"
+            >
+                Merci pour votre réponse !
+            </div>
+        </div>
+
+        <script>
+            // ===== LANGUAGE SWITCHING =====
+            let currentLang = "fr";
+
+            function switchLang(lang) {
+                currentLang = lang;
+                const html = document.documentElement;
+
+                // Set direction
+                if (lang === "he") {
+                    html.setAttribute("dir", "rtl");
+                    html.setAttribute("lang", "he");
+                } else {
+                    html.setAttribute("dir", "ltr");
+                    html.setAttribute("lang", "fr");
+                }
+
+                // Toggle active button
+                document
+                    .getElementById("btnFr")
+                    .classList.toggle("active", lang === "fr");
+                document
+                    .getElementById("btnHe")
+                    .classList.toggle("active", lang === "he");
+
+                // Update all translatable elements
+                document
+                    .querySelectorAll("[data-" + lang + "]")
+                    .forEach(function (el) {
+                        var text = el.getAttribute("data-" + lang);
+                        // For labels that have a required asterisk child
+                        var requiredSpan = el.querySelector(".required");
+                        if (requiredSpan) {
+                            el.innerHTML =
+                                text + ' <span class="required">*</span>';
+                        } else {
+                            el.innerHTML = text;
+                        }
+                    });
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            // ===== CHECKBOX LOGIC =====
+            const assisterontCheckbox = document.getElementById("assisteront");
+            const nassisterontCheckbox =
+                document.getElementById("nassisteront");
+            const guestCountGroup = document.getElementById("guestCountGroup");
+
+            assisterontCheckbox.addEventListener("change", function () {
+                if (this.checked) {
+                    nassisterontCheckbox.checked = false;
+                    guestCountGroup.style.display = "block";
+                } else {
+                    guestCountGroup.style.display = "none";
+                }
+            });
+
+            nassisterontCheckbox.addEventListener("change", function () {
+                if (this.checked) {
+                    assisterontCheckbox.checked = false;
+                    guestCountGroup.style.display = "none";
+                }
+            });
+
+            // ===== FORM SUBMISSION =====
+            function handleSubmit(event) {
+                event.preventDefault();
+
+                var form = document.getElementById("rsvpForm");
+
+                // Validate presence
+                if (
+                    !assisterontCheckbox.checked &&
+                    !nassisterontCheckbox.checked
+                ) {
+                    if (currentLang === "he") {
+                        alert("אנא ציינו אם תהיו נוכחים.");
+                    } else {
+                        alert("Veuillez indiquer votre présence.");
+                    }
+                    return false;
+                }
+
+                // Show toast
+                var toast = document.getElementById("toast");
+                toast.classList.add("show");
+
+                setTimeout(function () {
+                    toast.classList.remove("show");
+                }, 3000);
+
+                // Reset form
+                form.reset();
+                guestCountGroup.style.display = "none";
+
+                return false;
+            }
+        </script>
+    </body>
+</html>
