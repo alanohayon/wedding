@@ -1,0 +1,133 @@
+
+<style>
+  :root { --gap: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); padding: 4px 0; }
+  .card { background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 18px; display: flex; flex-direction: column; gap: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .card:hover { border-color: var(--color-border-primary); background: var(--color-background-primary); }
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .num { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); min-width: 20px; }
+  .badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .b-auto { background: #E1F5EE; color: #0F6E56; }
+  .b-agent { background: #EEEDFE; color: #3C3489; }
+  .dark .b-auto { background: #085041; color: #9FE1CB; }
+  .dark .b-agent { background: #26215C; color: #AFA9EC; }
+  .title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); line-height: 1.4; flex: 1; }
+  .desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+  .hook { font-size: 12px; font-weight: 500; color: var(--color-text-primary); font-style: italic; border-left: 2px solid var(--color-border-secondary); padding-left: 8px; margin-top: 2px; line-height: 1.5; }
+  .tools { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .tool { font-size: 10px; font-weight: 500; background: var(--color-background-tertiary); border: 1px solid var(--color-border-tertiary); border-radius: 4px; padding: 2px 6px; color: var(--color-text-secondary); }
+  .price { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); margin-top: auto; padding-top: 6px; border-top: 1px solid var(--color-border-tertiary); }
+  .delay { color: var(--color-text-info); }
+  h2 { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 12px; }
+  @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<div id="root">
+  <h2>Catalogue VIAgence — Automatisations & Agents IA</h2>
+  <div class="grid" id="cards"></div>
+</div>
+<script>
+const items = [
+  {
+    num:"01", type:"auto", label:"Automatisation",
+    title:"Qualification & relance leads automatique",
+    desc:"Chaque nouveau lead entrant (formulaire, LinkedIn, email) est qualifié par IA, scoré, puis relancé avec un message personnalisé sans intervention humaine.",
+    hook:"\"Arrêtez de perdre des leads faute de temps — chaque prospect est relancé en moins de 5 minutes, 24h/24.\"",
+    tools:["n8n","OpenAI","HubSpot / Monday","Gmail","Airtable"],
+    price:"250–350 € · livraison 48h"
+  },
+  {
+    num:"02", type:"auto", label:"Automatisation",
+    title:"Extraction & classement de documents PDF",
+    desc:"Factures, devis, contrats ou dossiers OPCO : l'agent lit les PDFs, extrait les données clés et les injecte directement dans votre CRM ou tableur.",
+    hook:"\"Fini la saisie manuelle — 100 factures traitées en 3 minutes, sans erreur, directement dans votre outil.\"",
+    tools:["n8n","GPT-4o-mini","Google Sheets","Airtable","Yousign"],
+    price:"200–350 € · livraison 48h"
+  },
+  {
+    num:"03", type:"agent", label:"Agent IA",
+    title:"Agent service client 24/7 (WhatsApp + site)",
+    desc:"Un agent IA répond aux questions clients sur WhatsApp et le site web, traite les demandes courantes et escalade vers un humain si nécessaire. Nourri avec vos FAQs, produits et process.",
+    hook:"\"Vos clients obtiennent une réponse en 10 secondes à 2h du matin — sans vous coûter un ETP.\"",
+    tools:["n8n","OpenAI","WhatsApp Business API","Notion / Airtable"],
+    price:"350–550 € · livraison 3–5j"
+  },
+  {
+    num:"04", type:"auto", label:"Automatisation",
+    title:"Création & publication de contenu LinkedIn / Instagram",
+    desc:"À partir d'un brief ou d'un thème hebdomadaire, génère automatiquement des posts, visuels Canva et légendes, les planifie et les publie selon votre calendrier éditorial.",
+    hook:"\"Une présence digitale constante sans y passer 3h par semaine — votre contenu tourne même quand vous prospectez.\"",
+    tools:["n8n","OpenAI","Canva API","Buffer / Later","Google Sheets"],
+    price:"250–400 € · livraison 48h"
+  },
+  {
+    num:"05", type:"agent", label:"Agent IA",
+    title:"Agent de création de devis & onboarding client",
+    desc:"Le client remplit un formulaire, l'agent génère automatiquement un devis personnalisé, l'envoie pour signature électronique et déclenche l'onboarding (dossier Drive, email de bienvenue, tâches Monday).",
+    hook:"\"De la demande au contrat signé en moins de 10 minutes — sans que vous touchiez un seul document.\"",
+    tools:["n8n","OpenAI","Yousign","Monday","Google Drive","Gmail"],
+    price:"400–600 € · livraison 3–5j"
+  },
+  {
+    num:"06", type:"auto", label:"Automatisation",
+    title:"Synthèse automatique de réunions & suivi d'actions",
+    desc:"Chaque réunion (Meet, Teams, Zoom) est transcrite, résumée par IA avec les décisions et actions extraites, puis envoyée aux participants et intégrée dans votre outil projet.",
+    hook:"\"Vos réunions se transforment automatiquement en plan d'action — plus personne ne repart sans savoir quoi faire.\"",
+    tools:["n8n","OpenAI / Whisper","Google Meet","Notion","Monday / Atlassian"],
+    price:"200–300 € · livraison 48h"
+  },
+  {
+    num:"07", type:"agent", label:"Agent IA",
+    title:"Agent recrutement & présélection de candidats",
+    desc:"L'agent collecte les candidatures, analyse les CVs selon vos critères, score les profils, rédige un compte-rendu synthétique par candidat et envoie les retours automatiques.",
+    hook:"\"Triez 200 CVs en 20 minutes — et ne consacrez votre temps qu'aux profils qui valent vraiment le déplacement.\"",
+    tools:["n8n","GPT-4o","Airtable","Gmail","Google Drive"],
+    price:"350–500 € · livraison 3–5j"
+  },
+  {
+    num:"08", type:"auto", label:"Automatisation",
+    title:"Veille concurrentielle & alertes sectorielles",
+    desc:"L'agent surveille les actualités de votre secteur, les publications de vos concurrents et les mentions de votre marque. Il synthétise chaque matin un briefing personnalisé envoyé par email ou Slack.",
+    hook:"\"Commencez chaque journée avec un briefing sur-mesure — décidez mieux, plus vite que vos concurrents.\"",
+    tools:["n8n","OpenAI","RSS / Perplexity API","Gmail","Slack / WhatsApp"],
+    price:"200–300 € · livraison 48h"
+  },
+  {
+    num:"09", type:"agent", label:"Agent IA",
+    title:"Agent comptabilité & suivi financier automatisé",
+    desc:"Relances de factures impayées, rapprochement bancaire, catégorisation des dépenses et reporting mensuel automatique. S'intègre à vos outils de facturation et de banque.",
+    hook:"\"Vos factures se relancent seules, vos dépenses se classifient seules — votre comptable vous dira merci.\"",
+    tools:["n8n","OpenAI","Xero / Pennylane","Stripe","Gmail","Airtable"],
+    price:"350–500 € · livraison 3–5j"
+  },
+  {
+    num:"10", type:"agent", label:"Agent IA",
+    title:"Agent formation & certification (OPCO)",
+    desc:"Collecte les données stagiaires, génère les attestations de formation personnalisées et produit les dossiers de financement ATLAS/MyAtlas complets avec les pièces justificatives pré-remplies.",
+    hook:"\"Finissez vos sessions de formation avec les dossiers OPCO prêts à déposer — zéro saisie, zéro oubli.\"",
+    tools:["n8n","GPT-4o-mini","Google Drive","Yousign","Gmail"],
+    price:"400–600 € · livraison 5–7j"
+  }
+];
+
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+if (dark) document.getElementById('root').classList.add('dark');
+
+const grid = document.getElementById('cards');
+items.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-head">
+      <span class="num">${item.num}</span>
+      <span class="title">${item.title}</span>
+      <span class="badge ${item.type === 'auto' ? 'b-auto' : 'b-agent'}">${item.label}</span>
+    </div>
+    <div class="desc">${item.desc}</div>
+    <div class="hook">${item.hook}</div>
+    <div class="tools">${item.tools.map(t => `<span class="tool">${t}</span>`).join('')}</div>
+    <div class="price delay">⏱ ${item.price}</div>
+  `;
+  card.onclick = () => sendPrompt(`Dis-moi comment implémenter l'automatisation "${item.title}" en détail`);
+  grid.appendChild(card);
+});
+</script>

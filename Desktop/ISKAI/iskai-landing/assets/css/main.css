@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0A0A0F;
+    color: #F1F5F9;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(168, 85, 247, 0.3);
+    color: #F1F5F9;
+  }
+}
+
+@layer components {
+  /* ========================================
+     GLASS CARDS - 3 variants par zone
+     ======================================== */
+
+  /* Base glass */
+  .glass-card {
+    @apply bg-white/[0.03] border border-brd-subtle rounded-card;
+    backdrop-filter: blur(20px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glass-card:hover {
+    @apply border-brd-accent shadow-glow;
+    transform: translateY(-2px);
+  }
+
+  /* Violet glass (Zone 1) */
+  .glass-card-violet {
+    @apply bg-white/[0.03] border border-brd-subtle rounded-card;
+    backdrop-filter: blur(20px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glass-card-violet:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(168, 85, 247, 0.03);
+    transform: translateY(-2px);
+  }
+
+  /* Green glass (Zone 2) */
+  .glass-card-green {
+    @apply bg-white/[0.02] border border-brd-subtle rounded-card;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-green:hover {
+    border-color: rgba(0, 255, 136, 0.35);
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.12), inset 0 0 30px rgba(0, 255, 136, 0.02);
+  }
+
+  /* ========================================
+     GRADIENT TEXT - 3 variants
+     ======================================== */
+  .gradient-text {
+    @apply bg-gradient-accent bg-clip-text text-transparent;
+  }
+  .gradient-text-violet {
+    background: linear-gradient(135deg, #A855F7, #C084FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-green {
+    background: linear-gradient(135deg, #10B981, #00FF88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ========================================
+     SECTION LABELS - 3 variants
+     ======================================== */
+  .section-label {
+    @apply font-mono text-sm font-medium tracking-wider uppercase mb-4;
+    color: #3B82F6;
+  }
+  .section-label-violet {
+    @apply font-mono text-sm font-medium tracking-wider uppercase mb-4;
+    color: #A855F7;
+  }
+  .section-label-green {
+    @apply font-mono text-sm font-medium tracking-wider uppercase mb-4;
+    color: #00FF88;
+  }
+
+  /* ========================================
+     CONTAINERS & LAYOUT
+     ======================================== */
+  .section-container {
+    @apply max-w-container mx-auto px-6 lg:px-8;
+  }
+
+  /* ========================================
+     BUTTONS
+     ======================================== */
+  .btn-primary {
+    @apply bg-accent-primary text-white font-semibold px-7 py-3.5 rounded-btn
+           transition-all duration-200 ease-out
+           hover:bg-accent-hover hover:shadow-glow-md hover:scale-[1.02]
+           active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-primary;
+  }
+
+  .btn-primary-violet {
+    @apply text-white font-semibold px-7 py-3.5 rounded-btn
+           transition-all duration-200 ease-out active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-accent-violet focus:ring-offset-2 focus:ring-offset-bg-primary;
+    background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  }
+  .btn-primary-violet:hover {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+    transform: scale(1.02);
+  }
+
+  .btn-secondary {
+    @apply border border-brd-accent text-accent-primary font-medium px-7 py-3.5 rounded-btn
+           bg-transparent transition-all duration-200 ease-out
+           hover:bg-accent-primary/10 hover:border-accent-primary hover:shadow-glow
+           active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-primary;
+  }
+
+  .btn-secondary-violet {
+    @apply font-medium px-7 py-3.5 rounded-btn bg-transparent transition-all duration-200 ease-out active:scale-[0.98];
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #A855F7;
+  }
+  .btn-secondary-violet:hover {
+    background: rgba(168, 85, 247, 0.1);
+    border-color: #A855F7;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);
+  }
+
+  /* ========================================
+     BADGES
+     ======================================== */
+  .badge-auto {
+    @apply text-caption font-medium px-2.5 py-0.5 rounded-pill;
+    background: rgba(0, 255, 136, 0.1);
+    color: #00FF88;
+  }
+  .badge-agent {
+    @apply text-caption font-medium px-2.5 py-0.5 rounded-pill;
+    background: rgba(168, 85, 247, 0.1);
+    color: #C084FC;
+  }
+
+  /* ========================================
+     BACKGROUNDS & EFFECTS
+     ======================================== */
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Luminous orbs - OpenClaw style */
+  .orb-violet {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  .orb-green {
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  .orb-blue {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  /* ========================================
+     SCROLL REVEAL
+     ======================================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========================================
+     CATALOGUE CARD - Hover Zoom
+     ======================================== */
+  .catalogue-card {
+    @apply bg-white/[0.02] border border-brd-subtle rounded-card;
+    backdrop-filter: blur(12px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
+    position: relative;
+  }
+
+  .catalogue-card:hover {
+    transform: scale(1);
+    z-index: 50;
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow:
+      0 0 40px rgba(0, 255, 136, 0.12),
+      0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Adjust origin by position */
+  .catalogue-card.origin-left { transform-origin: left center; }
+  .catalogue-card.origin-right { transform-origin: right center; }
+  .catalogue-card.origin-top-left { transform-origin: top left; }
+  .catalogue-card.origin-top-right { transform-origin: top right; }
+  .catalogue-card.origin-bottom-left { transform-origin: bottom left; }
+  .catalogue-card.origin-bottom-right { transform-origin: bottom right; }
+
+  /* Hidden details revealed on hover */
+  .card-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s ease;
+  }
+  .catalogue-card:hover .card-details {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .hover-pause:hover .animate-marquee,
+  .hover-pause:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
